@@ -1,0 +1,21 @@
+{
+  "name": "print-jobs-be",
+  "version": "1.0.0",
+  "description": "REST API application: show list of jobs or add new job to the list",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "author": "Olha Kulinich",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "nodemon": "^2.0.12"
+  }
+}
