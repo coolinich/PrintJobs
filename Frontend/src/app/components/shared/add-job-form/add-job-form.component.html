@@ -1,1 +1,38 @@
-<p>add-job-form works!</p>
+<form [formGroup]="addNewPrintJob" class="form-container">
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Created By</mat-label>
+        <input matInput formControlName="createdBy">
+    </mat-form-field>
+    <mat-form-field class="half-width" appearance="fill">
+        <mat-label>Created Date</mat-label>
+        <input matInput formControlName="createdDate" type="datetime-local">
+    </mat-form-field>
+    <mat-form-field class="half-width" appearance="fill">
+        <mat-label>Start Date</mat-label>
+        <input matInput formControlName="startDate" type="datetime-local">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Estimated Duration</mat-label>
+        <input matInput formControlName="estimatedDuration">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>File Name</mat-label>
+        <input matInput formControlName="fileName">
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Job Description</mat-label>
+        <input matInput formControlName="jobDescription">
+    </mat-form-field>
+    <mat-form-field class="half-width" appearance="fill">
+        <mat-label>Printer Model</mat-label>
+        <input matInput formControlName="printerModel">
+    </mat-form-field>
+    <mat-form-field class="half-width" appearance="fill">
+        <mat-label>Printer Type</mat-label>
+        <input matInput formControlName="printerType">
+    </mat-form-field>
+    <div class="controls-wrapper">
+        <button type="submit" (click)="onSubmit()" mat-stroked-button color="primary">Submit</button>
+        <button (click)="onCancel()" mat-stroked-button color="warn">Cancel</button>
+    </div>
+</form>
