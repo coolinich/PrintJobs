@@ -1,39 +1,44 @@
 import express from 'express';
 import cors from 'cors';
-import * as defaultDataSource from '../data/jobs.js';
-import { generateID } from './utils.js';
+import PrintJobManager from './business-logic/print-job-manager.js';
+import InMemoryJobsRepository from './repositories-impl/inmemory-jobs-repository.js';
 
 class Server {
     constructor() {
+        this.configureDependencies();
         this.app = express();
-        this.server();
-        this.routes();
+        this.configureServer();  
+        this.startServer();
     }
 
-    routes() {
+    configureDependencies() {
+        const repository = new InMemoryJobsRepository();
+        this.printJobManager = new PrintJobManager(repository);
+    } 
+
+    configureServer() {
         this.app.use(express.json());
         this.app.use(cors());
-
+       
+        let printJobManager = this.printJobManager;
+       
         this.app.get('/jobs', async (req, res) => {
-            let listOfAllJobs = await defaultDataSource.jobs;
+            const listOfAllJobs = await printJobManager.getAllPrintJobs();
             return res.json(listOfAllJobs);
         })
-
+       
         this.app.post('/job', async (req, res) => {
             const { job } = req.body;
-            let listOfAllJobs;
             if (!job) {
                 return res.status(400).send({
                     statusCode: 400,
                     errorMessage: "Bad request"
                 })
             }
-            job.id = generateID();
-            defaultDataSource.jobs.push(job);
-            listOfAllJobs = await defaultDataSource.jobs;
-            return res.json(listOfAllJobs);
-        })
-
+            const newJob = await printJobManager.addNewPrintJob(job);
+            return res.status(201).json(newJob);
+        }); 
+        
         this.app.use((req, res) => {
             res.status(404).send({
                 statusCode: 404,
@@ -42,7 +47,7 @@ class Server {
         })
     }
 
-    server() {
+    startServer() {
         this.app.listen(3001, () => {
             console.log("Server is runnung on port 3001");
         });
