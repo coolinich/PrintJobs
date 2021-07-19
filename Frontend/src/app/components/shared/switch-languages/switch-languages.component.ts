@@ -14,7 +14,7 @@ export class SwitchLanguagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.languageToUse = this.translateService.currentLang;
-    if (!localStorage.getItem('lagguage')) {
+    if (!localStorage.getItem('language')) {
       localStorage.setItem('language', this.languageToUse);
     }
   }

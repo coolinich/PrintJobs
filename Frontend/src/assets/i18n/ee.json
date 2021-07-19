@@ -1,0 +1,27 @@
+{
+    "GLOBAL_TITLE": "Kuva kõik prinditööd",
+    "VIEW_ALL_JOBS_PAGE": {
+        "ADD_PRINT_JOB_BTN": "Luua prinditöö"
+    },
+    "ADD_NEW_PRINT_JOB_PAGE": {
+        "VIEW_ALL_PRINT_JOBS_BTN": "Kõik prinditööd" 
+    },
+    "ALL_JOBS_LIST": {
+        "EMPTY_PRINT_JOBS_LIST": "Prindijärjekord on tühi"
+    },
+    "CREATE_NEW_PRINT_JOB_FORM": {
+        "CREATED_BY": "Loodud",
+        "CREATED_DATE": "Loodud kuupäev",
+        "START_DATE": "Alguskuupäev",
+        "ESTIMATED_DURATION": "Hinnanguline kestus (min)",
+        "FILE_NAME": "Faili nimi",
+        "JOB_DESCRIPTION": "Töö kirjeldus",
+        "PRINTER_MODEL": "Printeri mudel",
+        "PRINTER_TYPE": "Printeri tüüp",
+        "JOB_STATUS": "Töö staatus",
+        "SUBMIT_BTN": "Esita",
+        "CANCEL_BTN": "Tühista",
+        "VALIDATION_REQUIRED": "See väli on kohustuslik",
+        "VALIDATION_INCORRECT_FILENAME": "Palun sisesta õige faili nimi"
+    }
+}
