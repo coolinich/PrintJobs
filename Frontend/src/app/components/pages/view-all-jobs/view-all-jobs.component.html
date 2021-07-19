@@ -1,4 +1,9 @@
 <mat-toolbar>
-    <a mat-button routerLink="/add-new-job" class="add-new__btn">+ ADD PRINT JOB</a>
+    <a
+        mat-button
+        routerLink="/add-new-job"
+        class="add-new__btn">
+        + {{ "VIEW_ALL_JOBS_PAGE.ADD_PRINT_JOB_BTN" | translate | uppercase }}
+    </a>
 </mat-toolbar>
 <gpj-table></gpj-table>

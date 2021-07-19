@@ -1,0 +1,27 @@
+{
+    "GLOBAL_TITLE": "View all print jobs",
+    "VIEW_ALL_JOBS_PAGE": {
+        "ADD_PRINT_JOB_BTN": "ADD PRINT JOB"
+    },
+    "ADD_NEW_PRINT_JOB_PAGE": {
+        "VIEW_ALL_PRINT_JOBS_BTN": "View all print jobs" 
+    },
+    "ALL_JOBS_LIST": {
+        "EMPTY_PRINT_JOBS_LIST": "Print queue is empty"
+    },
+    "CREATE_NEW_PRINT_JOB_FORM": {
+        "CREATED_BY": "Created by",
+        "CREATED_DATE": "Created date",
+        "START_DATE": "Start date",
+        "ESTIMATED_DURATION": "Estimated duration (min)",
+        "FILE_NAME": "File name",
+        "JOB_DESCRIPTION": "Job description",
+        "PRINTER_MODEL": "Printer model",
+        "PRINTER_TYPE": "Printer type",
+        "JOB_STATUS": "Job status",
+        "SUBMIT_BTN": "Submit",
+        "CANCEL_BTN": "Cancel",
+        "VALIDATION_REQUIRED": "This field is mandatory",
+        "VALIDATION_INCORRECT_FILENAME": "Please, enter correct file name"
+    }
+}
