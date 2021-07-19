@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LANGUAGES } from '../assets/constants';
 
@@ -7,7 +7,7 @@ import { LANGUAGES } from '../assets/constants';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'print-jobs-app';
   translateToLanguage: string = LANGUAGES[0];
 
