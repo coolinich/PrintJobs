@@ -1,38 +1,60 @@
-<form [formGroup]="addNewPrintJob" class="form-container">
+<form [formGroup]="addNewPrintJobForm" #addNewPrintJobFormRef="ngForm" class="form__container"  novalidate>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Created By</mat-label>
         <input matInput formControlName="createdBy">
+        <mat-error *ngIf="createdBy?.errors?.required">This field is mandatory</mat-error>
     </mat-form-field>
-    <mat-form-field class="half-width" appearance="fill">
-        <mat-label>Created Date</mat-label>
-        <input matInput formControlName="createdDate" type="datetime-local">
-    </mat-form-field>
-    <mat-form-field class="half-width" appearance="fill">
-        <mat-label>Start Date</mat-label>
-        <input matInput formControlName="startDate" type="datetime-local">
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Estimated Duration</mat-label>
-        <input matInput formControlName="estimatedDuration">
-    </mat-form-field>
+    <div class="set-time__wrapper">
+        <mat-form-field appearance="fill">
+            <mat-label>Estimated Duration (min)</mat-label>
+            <input type="number" matInput formControlName="estimatedDuration">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Start Date</mat-label>
+            <input matInput formControlName="startDate" type="datetime-local" [min]="currentTimeFormatted">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Created Date</mat-label>
+            <input matInput formControlName="createdDate" type="datetime-local">
+        </mat-form-field>
+    </div>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>File Name</mat-label>
         <input matInput formControlName="fileName">
+        <mat-error *ngIf="fileName?.touched && fileName?.errors?.required">This field is mandatory</mat-error>
+        <mat-error *ngIf="fileName?.touched && fileName?.errors?.pattern">Enter correct file name</mat-error>
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>Job Description</mat-label>
-        <input matInput formControlName="jobDescription">
+        <textarea matInput formControlName="jobDescription"></textarea>
+        <mat-error *ngIf="jobDescription?.errors?.required">This field is mandatory</mat-error>
     </mat-form-field>
-    <mat-form-field class="half-width" appearance="fill">
-        <mat-label>Printer Model</mat-label>
-        <input matInput formControlName="printerModel">
-    </mat-form-field>
-    <mat-form-field class="half-width" appearance="fill">
-        <mat-label>Printer Type</mat-label>
-        <input matInput formControlName="printerType">
-    </mat-form-field>
-    <div class="controls-wrapper">
-        <button type="submit" (click)="onSubmit()" mat-stroked-button color="primary">Submit</button>
-        <button (click)="onCancel()" mat-stroked-button color="warn">Cancel</button>
+    <div class="printer-settings__wrapper">
+        <mat-form-field appearance="fill">
+            <mat-label>Printer Model</mat-label>
+            <input matInput formControlName="printerModel">
+            <mat-error *ngIf="printerModel?.errors?.required">This field is mandatory</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Printer Type</mat-label>
+            <input matInput formControlName="printerType">
+            <mat-error *ngIf="printerType?.errors?.required">This field is mandatory</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="controls__wrapper">
+        <button
+          (click)="onSubmit(addNewPrintJobFormRef)"
+          mat-stroked-button
+          color="primary"
+          [disabled]="addNewPrintJobForm && (addNewPrintJobForm.pristine || addNewPrintJobForm.invalid)">
+          Submit
+        </button>
+        <button
+          type="button"
+          (click)="onCancel(addNewPrintJobFormRef)"
+          mat-stroked-button
+          color="warn">
+          Cancel
+        </button>
     </div>
 </form>

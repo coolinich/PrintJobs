@@ -13,12 +13,13 @@ export class TableComponent implements OnInit {
   dataSource!: PrintJobsDataSource;
   displayedColumns: string[] = [
     'createdBy',
-    'createdDate',
     'jobDescription',
     'estimatedDuration',
     'fileName',
     'printerModel',
-    'printerType'
+    'printerType',
+    'startDate',
+    'createdDate'
   ]; 
   constructor(private printJobsService: PrintJobsService) { }
 
@@ -26,5 +27,4 @@ export class TableComponent implements OnInit {
     this.dataSource = new PrintJobsDataSource(this.printJobsService);
     this.dataSource.loadJobs();
   }
-
 }

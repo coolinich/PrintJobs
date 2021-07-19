@@ -20,6 +20,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -27,6 +28,7 @@ import { TableComponent } from './components/shared/table/table.component';
 import { AddJobFormComponent } from './components/shared/add-job-form/add-job-form.component';
 import { ViewAllJobsComponent } from './components/pages/view-all-jobs/view-all-jobs.component';
 import { AddNewJobComponent } from './components/pages/add-new-job/add-new-job.component';
+import { SwitchLanguagesComponent } from './components/shared/switch-languages/switch-languages.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "/assets/i18n/", ".json");
@@ -39,7 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TableComponent,
     AddJobFormComponent,
     ViewAllJobsComponent,
-    AddNewJobComponent
+    AddNewJobComponent,
+    SwitchLanguagesComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatProgressSpinnerModule,
     MatSortModule,
     MatIconModule,
+    MatTooltipModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
