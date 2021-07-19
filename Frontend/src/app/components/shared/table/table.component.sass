@@ -1,6 +1,16 @@
 .table-container
     text-align: center
     margin: 0 auto
+    .spinner-container
+        position: fixed
+        display: inline-block
+        mat-spinner
+            margin: 10rem  auto 0 auto
+    .empty-print-jobs__list
+        line-height: 3rem
+        color: rgba(0, 0, 0, 0.54)
+        font-style: italic
+        text-align: center
 
 th[mat-header-cell]
     text-align: center
@@ -15,8 +25,3 @@ th[mat-header-cell]
         display: inline-block
         line-height: 3rem 
 
-.spinner-container
-    position: fixed
-    display: inline-block
-    mat-spinner
-        margin: 5rem  auto 0 auto
