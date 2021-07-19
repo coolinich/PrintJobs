@@ -1,0 +1,10 @@
+<div class="switch-language__btn-group">
+    <button
+      mat-button
+      *ngFor="let language of availableLanguages; let languageId = index"
+      [id]="language"
+      [ngClass]="{'selected': languageToUse === availableLanguages[languageId]}"
+      (click)="changeLanguage($event)"
+    > {{ availableLanguages[languageId] | uppercase }}
+    </button>
+</div>
