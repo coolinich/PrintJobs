@@ -10,4 +10,4 @@ export default class InMemoryJobsRepository {
     async getAllPrintJobs() {
         return this.jobs;
     }
-};
+}
