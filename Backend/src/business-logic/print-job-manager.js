@@ -14,4 +14,4 @@ export default class PrintJobManager {
     async getAllPrintJobs() {
         return await this.printJobsRepository.getAllPrintJobs();
     }
-};
+}

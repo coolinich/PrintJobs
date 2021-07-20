@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "lint": "./node_modules/.bin/eslint "
   },
   "author": "Olha Kulinich",
   "license": "MIT",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "cors": "^2.8.5",
+    "eslint": "^7.31.0",
     "nodemon": "^2.0.12"
   }
 }
