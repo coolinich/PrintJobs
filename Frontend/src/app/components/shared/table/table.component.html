@@ -19,24 +19,43 @@
         <!-- createdDate Column -->
         <ng-container matColumnDef="createdDate">
             <th mat-header-cell *matHeaderCellDef> CREATED DATE </th>
-            <td mat-cell *matCellDef="let element"> {{ element.createdDate | date: 'medium' }} </td>
+            <td mat-cell *matCellDef="let element">
+                <div class="date-time__wrapper">
+                    <span class="date">{{ element.createdDate | date: 'mediumDate' }}</span>
+                    <span class="time">{{ element.createdDate | date: 'shortTime' }}</span>
+                </div>
+            </td>
         </ng-container>
 
         <!-- startDate Column -->
         <ng-container matColumnDef="startDate">
             <th mat-header-cell *matHeaderCellDef> START DATE </th>
-            <td mat-cell *matCellDef="let element"> {{ element.startDate | date: 'medium' }} </td>
+            <td mat-cell *matCellDef="let element">
+                <div class="date-time__wrapper">
+                    <span class="date">{{ element.startDate | date: 'mediumDate' }}</span>
+                    <span class="time">{{ element.startDate | date: 'shortTime' }}</span>
+                </div>
+            </td>
         </ng-container>
     
         <!-- estimatedDuration Column -->
         <ng-container matColumnDef="estimatedDuration">
             <th mat-header-cell *matHeaderCellDef> ESTIMATED DURATION </th>
-            <td mat-cell *matCellDef="let element"> {{ element.estimatedDuration }} </td>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element.estimatedDuration | convertTimeDuration }}
+            </td>
           </ng-container>
     
         <!-- fileName Column -->
         <ng-container matColumnDef="fileName">
-            <th mat-header-cell *matHeaderCellDef class="long-line__heading"> FILE NAME </th>
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              class="long-line__heading">
+              FILE NAME
+            </th>
             <td
               mat-cell
               *matCellDef="let element"
@@ -49,8 +68,21 @@
     
         <!-- jobDescription Column -->
         <ng-container matColumnDef="jobDescription">
-            <th mat-header-cell *matHeaderCellDef> JOB DESCRIPTION </th>
-            <td mat-cell *matCellDef="let element"> {{ element.jobDescription }} </td>
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              class="long-line__heading"> 
+              JOB DESCRIPTION
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              matTooltip="{{ element.jobDescription }}"
+              matTooltipClass="mat-tooltip"
+              matTooltipPosition="below"
+              class="long-line__item">
+              {{ element.jobDescription }}
+            </td>
         </ng-container>
     
         <!-- printerModel Column -->

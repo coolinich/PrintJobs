@@ -1,5 +1,6 @@
+@import "src/styles.sass"
+
 .table-container
-    text-align: center
     margin: 0 auto
     .spinner-container
         position: fixed
@@ -8,20 +9,70 @@
             margin: 10rem  auto 0 auto
     .empty-print-jobs__list
         line-height: 3rem
-        color: rgba(0, 0, 0, 0.54)
+        color: $base-light-gray-color
         font-style: italic
-        text-align: center
+
+tr
+    &.mat-heading-row
+        heigth: 3.5rem
+
 
 th[mat-header-cell]
     text-align: center
+    padding: 0 .3rem
     &.long-line__heading
-        width: 10rem
+        display: inline-block
+        min-width: 15%
+        line-height: 3.5rem
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
 
 .mat-cell
+    padding: 0 .3rem
+    &:not(.long-line__item)
+        justify-content: center
+        font-weight: $bold-text
+        font-size: .75rem
+        color: $base-dark-gray-color
     &.long-line__item
         white-space: nowrap
         overflow: hidden
         text-overflow: ellipsis
         display: inline-block
+        min-width: 15%
         line-height: 3rem 
+    .date-time__wrapper
+        display: flex
+        flex-direction: column
+        text-align: center
+        font-weight: $bold-text
+        font-size: .75rem
+        color: $base-dark-gray-color
 
+@media screen and (max-width: 992px)
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type
+        padding-left: .5rem
+    th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type
+        padding-right: .5rem 
+
+@media screen and (max-width: 768px)
+    th[mat-header-cell]
+        padding: 0 .05rem
+    .mat-header-cell
+        font-size: .625rem
+        &.mat-column-createdBy
+            display: none
+    .mat-cell
+        padding: 0 .05rem
+        font-size: .75rem        
+        &.mat-column-createdBy
+            display: none
+
+@media screen and (max-width: 576px)
+    .mat-header-cell
+        &.mat-column-createdDate
+            display: none
+    .mat-cell      
+        &.mat-column-createdDate
+            display: none

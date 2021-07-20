@@ -1,11 +1,14 @@
+@import "src/styles.sass"
+
 .switch-language__btn-group
     button
         padding: 0 .25rem
         min-width: min-content
         border-radius: 0
         line-height: 1rem
-        color: rgba(0, 0, 0, .54)
+        color: $base-light-gray-color
     .selected
-        color: rgba(0, 0, 0, 1)
+        color: $base-dark-gray-color
+        font-weight: $bold-text
     button + button
-        border-left: 1px solid rgba(0, 0, 0, .3)
+        border-left: 1px solid $base-light-gray-color

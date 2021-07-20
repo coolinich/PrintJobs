@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
@@ -29,6 +29,7 @@ import { AddJobFormComponent } from './components/shared/add-job-form/add-job-fo
 import { ViewAllJobsComponent } from './components/pages/view-all-jobs/view-all-jobs.component';
 import { AddNewJobComponent } from './components/pages/add-new-job/add-new-job.component';
 import { SwitchLanguagesComponent } from './components/shared/switch-languages/switch-languages.component';
+import { ConvertTimeDurationPipe } from './pipes/convert-time-duration.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "/assets/i18n/", ".json");
@@ -42,7 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddJobFormComponent,
     ViewAllJobsComponent,
     AddNewJobComponent,
-    SwitchLanguagesComponent
+    SwitchLanguagesComponent,
+    ConvertTimeDurationPipe
   ],
   imports: [
     BrowserModule,

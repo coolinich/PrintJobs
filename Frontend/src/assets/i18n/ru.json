@@ -10,10 +10,10 @@
         "EMPTY_PRINT_JOBS_LIST": "Очередь задач на печать пустая"
     },
     "CREATE_NEW_PRINT_JOB_FORM": {
-        "CREATED_BY": "Создана",
-        "CREATED_DATE": "Дата создания",
-        "START_DATE": "Дата начала печати",
-        "ESTIMATED_DURATION": "Длительность (min)",
+        "CREATED_BY": "Кем создана",
+        "CREATED_DATE": "Дата и время создания",
+        "START_DATE": "Дата и время начала печати",
+        "ESTIMATED_DURATION": "Длительность (мин)",
         "FILE_NAME": "Имя файла",
         "JOB_DESCRIPTION": "Описание задачи",
         "PRINTER_MODEL": "Модель принтера",

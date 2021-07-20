@@ -12,12 +12,12 @@ import { JOBS } from 'src/assets/constants';
 export class TableComponent implements OnInit {
   dataSource!: PrintJobsDataSource;
   displayedColumns: string[] = [
-    'createdBy',
     'jobDescription',
-    'estimatedDuration',
     'fileName',
     'printerModel',
     'printerType',
+    'createdBy',
+    'estimatedDuration',
     'startDate',
     'createdDate'
   ]; 
