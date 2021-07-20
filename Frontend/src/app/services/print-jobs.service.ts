@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
-import { Observable } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { API_URL } from 'src/environments/environment';
 import { Job } from '../interfaces/job';
 
 @Injectable({
@@ -13,11 +13,11 @@ export class PrintJobsService {
   constructor(private http: HttpClient) { }
 
   getAllPrintJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>('http://localhost:3001/jobs');
+    return this.http.get<Job[]>(`${API_URL}/jobs`);
   }
 
   addNewPrintJob(job: Job): Observable<Job> {
-    return this.http.post<Job>('http://localhost:3001/job', { job })
+    return this.http.post<Job>(`${API_URL}/job`, { job })
       .pipe(
         catchError((err) => throwError(err?.message))
       )

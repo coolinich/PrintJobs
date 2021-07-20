@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import PrintJobManager from './business-logic/print-job-manager.js';
 import InMemoryJobsRepository from './repositories-impl/inmemory-jobs-repository.js';
+const PORT = 3001;
 
 class Server {
     constructor() {
@@ -48,8 +49,8 @@ class Server {
     }
 
     startServer() {
-        this.app.listen(3001, () => {
-            console.log("Server is runnung on port 3001");
+        this.app.listen(PORT, () => {
+            console.log(`Server is runnung on http://localhost:${PORT}`);
         });
     }
 }
