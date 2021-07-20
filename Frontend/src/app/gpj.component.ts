@@ -3,9 +3,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { LANGUAGES } from '../assets/constants';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  selector: 'gpj-root',
+  templateUrl: './gpj.component.html',
+  styleUrls: ['./gpj.component.sass']
 })
 export class AppComponent implements OnInit {
   title = 'print-jobs-app';
@@ -16,9 +16,9 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const languageFromLocalStorage = localStorage.getItem('language');
-    if (languageFromLocalStorage) {
-      this.translateToLanguage = languageFromLocalStorage;
+    const getLanguageFromLocalStorage = localStorage.getItem('language');
+    if (getLanguageFromLocalStorage) {
+      this.translateToLanguage = getLanguageFromLocalStorage;
     }
     this.translateService.use(this.translateToLanguage);
   }
