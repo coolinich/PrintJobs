@@ -7,12 +7,22 @@
         "VIEW_ALL_PRINT_JOBS_BTN": "View all print jobs" 
     },
     "ALL_JOBS_LIST": {
-        "EMPTY_PRINT_JOBS_LIST": "Print queue is empty"
-    },
-    "CREATE_NEW_PRINT_JOB_FORM": {
+        "EMPTY_PRINT_JOBS_LIST": "Print queue is empty",
+        "ID": "Id",
         "CREATED_BY": "Created by",
         "CREATED_DATE": "Created date",
         "START_DATE": "Start date",
+        "ESTIMATED_DURATION": "Estimated duration",
+        "FILE_NAME": "File name" ,
+        "JOB_DESCRIPTION": "Job description" ,
+        "PRINTER_MODEL": "Printer model" ,
+        "PRINTER_TYPE": "Printer type" ,
+        "JOB_STATUS": "Job status" 
+    },
+    "CREATE_NEW_PRINT_JOB_FORM": {
+        "CREATED_BY": "Created by",
+        "CREATED_DATE": "Created date and time",
+        "START_DATE": "Start date and time",
         "ESTIMATED_DURATION": "Estimated duration (min)",
         "FILE_NAME": "File name",
         "JOB_DESCRIPTION": "Job description",

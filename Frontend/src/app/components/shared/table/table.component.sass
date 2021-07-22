@@ -1,27 +1,87 @@
+@import "src/styles.sass"
+
 .table-container
-    text-align: center
     margin: 0 auto
     .spinner-container
+        width: 100%
         position: fixed
         display: inline-block
         mat-spinner
-            margin: 10rem  auto 0 auto
-    .empty-print-jobs__list
-        line-height: 3rem
-        color: rgba(0, 0, 0, 0.54)
-        font-style: italic
+            margin: 10rem auto 0 auto
+    tr
+        &.mat-heading-row
+            heigth: 3.5rem
+        &.empty-print-jobs__list
+            line-height: 3rem
+            color: $base-light-gray-color
+            font-style: italic
+            &.hideBeforeDataLoaded
+                display: none
+    th[mat-header-cell]
         text-align: center
+        justify-content: center
+        padding: 0 .3rem
+        &.long-line__heading
+            display: inline-block
+            line-height: 3.5rem
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
+        &.long-line__heading.wide-col
+            min-width: 15%
+        &.long-line__heading.narrow-col
+            min-width: 5%    
+    .mat-cell
+        padding: 0 .3rem
+        &:not(.long-line__item)
+            justify-content: center
+            font-size: .75rem
+            color: $base-dark-gray-color
+        &:not(.long-line__item)
+            font-weight: $bold-text
+        &.long-line__item
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
+            display: inline-block
+            line-height: 3rem
+        &.long-line__item.wide-col
+            min-width: 15%
+        &.long-line__item.narrow-col
+            min-width: 5%     
+        .date-time__wrapper
+            display: flex
+            flex-direction: column
+            text-align: center
+            font-weight: $bold-text
+            font-size: .75rem
+            color: $base-dark-gray-color
+            span
+                display: inline-block
+                overflow: hidden
+                white-space: nowrap
 
-th[mat-header-cell]
-    text-align: center
-    &.long-line__heading
-        width: 10rem
+@media screen and (max-width: 992px)
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type
+        padding-left: .5rem
+    th.mat-header-cell:last-of-type, td.mat-cell:last-of-type
+        padding-right: .5rem
+    .mat-header-cell
+        font-size: .625rem
 
-.mat-cell
-    &.long-line__item
-        white-space: nowrap
-        overflow: hidden
-        text-overflow: ellipsis
-        display: inline-block
-        line-height: 3rem 
+@media screen and (max-width: 768px)
+    th[mat-header-cell]
+        padding: 0 .05rem
+    .mat-cell
+        padding: 0 .05rem
+        font-size: .75rem
+    .mat-column-createdBy
+        display: none !important
 
+@media screen and (max-width: 576px)
+    .mat-header-cell
+        &.mat-column-createdDate
+            display: none
+    .mat-cell      
+        &.mat-column-createdDate
+            display: none

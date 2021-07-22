@@ -7,7 +7,17 @@
         "VIEW_ALL_PRINT_JOBS_BTN": "Kõik prinditööd" 
     },
     "ALL_JOBS_LIST": {
-        "EMPTY_PRINT_JOBS_LIST": "Prindijärjekord on tühi"
+        "EMPTY_PRINT_JOBS_LIST": "Prindijärjekord on tühi",
+        "ID": "Id",
+        "CREATED_BY": "Loodud",
+        "CREATED_DATE": "Loodud kuupäev",
+        "START_DATE": "Alguskuupäev",
+        "ESTIMATED_DURATION": "Hinnanguline kestus",
+        "FILE_NAME": "Faili nimi" ,
+        "JOB_DESCRIPTION": "Töö kirjeldu" ,
+        "PRINTER_MODEL": "Printeri mudel" ,
+        "PRINTER_TYPE": "Printeri tüüp" ,
+        "JOB_STATUS": "Töö staatus" 
     },
     "CREATE_NEW_PRINT_JOB_FORM": {
         "CREATED_BY": "Loodud",

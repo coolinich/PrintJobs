@@ -22,7 +22,7 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
     fileName: new FormControl('', [
       Validators.required,
       Validators.maxLength(255),
-      Validators.pattern('^([-a-zA-Z0-9\/\s_\\.\(\):])+.[a-zA-Z0-9]{3,4}')
+      Validators.pattern('^([-a-zA-Z0-9\/\s_\\(\):])+(\.[a-zA-Z0-9]+)?$')
     ]),
     jobDescription: new FormControl('', [Validators.required, Validators.maxLength(450)]),
     printerModel: new FormControl('', [Validators.required, Validators.maxLength(20)]),
