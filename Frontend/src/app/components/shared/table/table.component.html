@@ -1,24 +1,45 @@
 <div class="table-container">
-    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <div class="spinner-container" *ngIf="ifLoading">
         <mat-spinner></mat-spinner>
     </div>
     
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Id Column -->
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <th
+              mat-header-cell
+              *matHeaderCellDef> 
+              {{ "ALL_JOBS_LIST.ID" | translate | uppercase }}
+            </th>
             <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
         </ng-container>
     
         <!-- createdBy Column -->
         <ng-container matColumnDef="createdBy">
-            <th mat-header-cell *matHeaderCellDef> CREATED BY </th>
-            <td mat-cell *matCellDef="let element"> {{ element.createdBy}} </td>
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              class="long-line__heading narrow-col"> 
+              {{ "ALL_JOBS_LIST.CREATED_BY" | translate | uppercase }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              matTooltip="{{ element.createdBy }}"
+              matTooltipClass="mat-tooltip"
+              matTooltipPosition="below"
+              class="long-line__item narrow-col">
+              {{ element.createdBy }}
+            </td>
         </ng-container>
     
         <!-- createdDate Column -->
         <ng-container matColumnDef="createdDate">
-            <th mat-header-cell *matHeaderCellDef> CREATED DATE </th>
+            <th
+              mat-header-cell
+              *matHeaderCellDef>
+              {{ "ALL_JOBS_LIST.CREATED_DATE" | translate | uppercase }}
+            </th>
             <td mat-cell *matCellDef="let element">
                 <div class="date-time__wrapper">
                     <span class="date">{{ element.createdDate | date: 'mediumDate' }}</span>
@@ -29,7 +50,11 @@
 
         <!-- startDate Column -->
         <ng-container matColumnDef="startDate">
-            <th mat-header-cell *matHeaderCellDef> START DATE </th>
+            <th
+              mat-header-cell
+              *matHeaderCellDef>
+              {{ "ALL_JOBS_LIST.START_DATE" | translate | uppercase }}
+            </th>
             <td mat-cell *matCellDef="let element">
                 <div class="date-time__wrapper">
                     <span class="date">{{ element.startDate | date: 'mediumDate' }}</span>
@@ -40,7 +65,11 @@
     
         <!-- estimatedDuration Column -->
         <ng-container matColumnDef="estimatedDuration">
-            <th mat-header-cell *matHeaderCellDef> ESTIMATED DURATION </th>
+            <th
+              mat-header-cell
+              *matHeaderCellDef>
+              {{ "ALL_JOBS_LIST.ESTIMATED_DURATION" | translate | uppercase }}
+            </th>
             <td
               mat-cell
               *matCellDef="let element">
@@ -53,8 +82,8 @@
             <th
               mat-header-cell
               *matHeaderCellDef
-              class="long-line__heading">
-              FILE NAME
+              class="long-line__heading wide-col">
+              {{ "ALL_JOBS_LIST.FILE_NAME" | translate | uppercase }}
             </th>
             <td
               mat-cell
@@ -62,7 +91,7 @@
               matTooltip="{{ element.fileName }}"
               matTooltipClass="mat-tooltip"
               matTooltipPosition="below"
-              class="long-line__item"
+              class="long-line__item wide-col"
               > {{ element.fileName }} </td>
         </ng-container>
     
@@ -71,8 +100,8 @@
             <th
               mat-header-cell
               *matHeaderCellDef
-              class="long-line__heading"> 
-              JOB DESCRIPTION
+              class="long-line__heading wide-col"> 
+              {{ "ALL_JOBS_LIST.JOB_DESCRIPTION" | translate | uppercase }}
             </th>
             <td
               mat-cell
@@ -80,33 +109,52 @@
               matTooltip="{{ element.jobDescription }}"
               matTooltipClass="mat-tooltip"
               matTooltipPosition="below"
-              class="long-line__item">
+              class="long-line__item wide-col">
               {{ element.jobDescription }}
             </td>
         </ng-container>
     
         <!-- printerModel Column -->
         <ng-container matColumnDef="printerModel">
-            <th mat-header-cell *matHeaderCellDef> PRINTER MODEL </th>
+            <th
+              mat-header-cell
+              *matHeaderCellDef>
+              {{ "ALL_JOBS_LIST.PRINTER_MODEL" | translate | uppercase }}
+            </th>
             <td mat-cell *matCellDef="let element"> {{ element.printerModel }} </td>
         </ng-container>
     
         <!-- printerType Column -->
         <ng-container matColumnDef="printerType">
-            <th mat-header-cell *matHeaderCellDef> PRINTER TYPE </th>
+            <th
+              mat-header-cell
+              *matHeaderCellDef>
+              {{ "ALL_JOBS_LIST.PRINTER_TYPE" | translate | uppercase }}
+            </th>
             <td mat-cell *matCellDef="let element"> {{ element.printerType }} </td>
         </ng-container>
     
         <!-- jobStatus Column -->
         <ng-container matColumnDef="jobStatus">
-            <th mat-header-cell *matHeaderCellDef> JOB STATUS </th>
+            <th
+              mat-header-cell
+              *matHeaderCellDef>
+              {{ "ALL_JOBS_LIST.JOB_STATUS" | translate | uppercase }}
+            </th>
             <td mat-cell *matCellDef="let element"> {{ element.jobStatus }} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        <tr class="mat-row" *matNoDataRow class="empty-print-jobs__list">
-            <td class="mat-cell" colspan="999">{{ "ALL_JOBS_LIST.EMPTY_PRINT_JOBS_LIST" | translate }}</td>
+        <tr
+          class="mat-row empty-print-jobs__list"
+          *matNoDataRow
+          [ngClass]="{'hideBeforeDataLoaded': ifLoading}">
+            <td
+              class="mat-cell"
+              [colSpan]="displayedColumns.length">
+              {{ "ALL_JOBS_LIST.EMPTY_PRINT_JOBS_LIST" | translate }}
+            </td>
         </tr>
     </mat-table>   
 </div>

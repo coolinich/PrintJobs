@@ -7,7 +7,17 @@
         "VIEW_ALL_PRINT_JOBS_BTN": "Все задачи на печать" 
     },
     "ALL_JOBS_LIST": {
-        "EMPTY_PRINT_JOBS_LIST": "Очередь задач на печать пустая"
+        "EMPTY_PRINT_JOBS_LIST": "Очередь задач на печать пустая",
+        "ID": "№",
+        "CREATED_BY": "Кем создана",
+        "CREATED_DATE": "Время создания",
+        "START_DATE": "Начало печати",
+        "ESTIMATED_DURATION": "Длительность",
+        "FILE_NAME": "Имя файла" ,
+        "JOB_DESCRIPTION": "Описание задачи" ,
+        "PRINTER_MODEL": "Модель принтера" ,
+        "PRINTER_TYPE": "Тип принтера" ,
+        "JOB_STATUS": "Статус задачи" 
     },
     "CREATE_NEW_PRINT_JOB_FORM": {
         "CREATED_BY": "Кем создана",
