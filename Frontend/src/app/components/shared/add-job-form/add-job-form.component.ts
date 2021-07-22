@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Job } from 'src/app/interfaces/job';
@@ -17,7 +19,7 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
   addNewPrintJobForm = new FormGroup({
     createdBy: new FormControl('', [Validators.required, Validators.maxLength(255)]),
     createdDate: new FormControl({value: '', disabled: true}),
-    startDate: new FormControl(''),
+    startDate: new FormControl('', [Validators.required]),
     estimatedDuration: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
     fileName: new FormControl('', [
       Validators.required,
@@ -29,12 +31,22 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
     printerType: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     jobStatus: new FormControl('')
   });
+  translationsForSnackBar: any;
+  ifLoading: boolean = false;
 
-  constructor(private printJobsService: PrintJobsService) { 
-  }
+  constructor(
+    private printJobsService: PrintJobsService,
+    private _snackBar: MatSnackBar,
+    private translateService: TranslateService
+    ) {}
 
   ngOnInit(): void {
     this.setInitialFormState();
+    this.translateService.get('NOTIFICATIONS')
+      .pipe(takeUntil(this.activeFormsubject$))
+      .subscribe(translations  => {
+        this.translationsForSnackBar = translations;
+    })
   }
 
   ngOnDestroy() {
@@ -47,6 +59,7 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(formDirective: FormGroupDirective) {
+    this.ifLoading = true;
     this.printJobsService
       .addNewPrintJob(this.prepareFormData())
       .pipe(takeUntil(this.activeFormsubject$))
@@ -54,9 +67,26 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
         res => {
           formDirective.resetForm();
           this.addNewPrintJobForm.reset();
+          this.ifLoading = false;
           this.setInitialFormState();
+          this._snackBar.open(
+            this.translationsForSnackBar.ON_SUCCESS_NEW_JOB_POST,
+            this.translationsForSnackBar.ON_SUCCESS_DISMISS,
+            {
+              duration: 3000
+            }
+          );
         },
-        err => console.log(err)
+        err => {
+          this.ifLoading = false;
+          this._snackBar.open(
+            this.translationsForSnackBar.ON_FAILED_POST,
+            this.translationsForSnackBar.ON_FAIL_DISMISS,
+            {
+              duration: 3000
+            }
+          );
+        }
       )
   }
 
@@ -79,6 +109,14 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
 
   get createdDate() {
     return this.addNewPrintJobForm.get('createdDate');
+  }
+
+  get startDate() {
+    return this.addNewPrintJobForm.get('startDate');
+  }
+
+  get estimatedDuration() {
+    return this.addNewPrintJobForm.get('estimatedDuration');
   }
 
   get fileName() {

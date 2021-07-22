@@ -1,15 +1,27 @@
+@import "src/styles.sass"
+
 .form__container
     max-width: 75%
     margin: 2rem auto
     display: flex
     flex-direction: column
+    position: relative
+    .spinner-container
+        width: 100%
+        height: 100%
+        position: absolute
+        display: flex
+        justify-content: center
+        align-items: center
+        z-index: 10000
+        opacity: .4
+        background-color: $base-shadow-gray-color
     .set-time__wrapper
         display: flex
         justify-content: space-between
         flex-flow: wrap
     .printer-settings__wrapper
         display: flex
-        flex-flow: wrap
         mat-form-field + mat-form-field
             margin-left: .5rem    
 .controls__wrapper
@@ -18,3 +30,35 @@
     button+button
         margin-left: .5rem
 
+@media screen and (max-width: 768px)
+    .controls__wrapper
+        margin-left: 0
+        justify-content: space-between
+        button
+            min-width: 49%
+    .printer-settings__wrapper
+        justify-content: space-between
+        mat-form-field
+            margin-left: 0
+            min-width: 49%
+
+
+@media screen and (max-width: 576px)
+    .form__container
+        .set-time__wrapper
+            flex-direction: column
+            mat-form-field
+                min-width: 100%
+        .printer-settings__wrapper
+            flex-direction: column
+            mat-form-field
+                min-width: 100%
+            mat-form-field + mat-form-field
+                margin-left: 0
+    .controls__wrapper
+        flex-direction: column
+        button
+            min-width: 100%
+        button+button
+            margin: 1rem 0
+            
