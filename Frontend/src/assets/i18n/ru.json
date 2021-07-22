@@ -32,6 +32,15 @@
         "SUBMIT_BTN": "Создать",
         "CANCEL_BTN": "Отменить",
         "VALIDATION_REQUIRED": "Это поле обязательное",
-        "VALIDATION_INCORRECT_FILENAME": "Введите правильное имя файла"
+        "VALIDATION_INCORRECT_FILENAME": "Введите правильное имя файла",
+        "VALIDATION_TOO_LONG": "Введенный текст слишком длинный",
+        "VALIDATION_INCORRECT_VALUE": "Это значение некорректное"
+    },
+    "NOTIFICATIONS": {
+        "ON_SUCCESS_NEW_JOB_POST": "Новая задача на печать успешно создана",
+        "ON_FAILED_POST": "Произошла ошибка, задача не добавлена",
+        "ON_SUCCESS_DISMISS": "OK",
+        "ON_FAIL_DISMISS": "Попробовать позже",
+        "GENERAL_ERROR": "Произошла ошибка"
     }
 }

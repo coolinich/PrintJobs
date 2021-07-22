@@ -32,6 +32,15 @@
         "SUBMIT_BTN": "Submit",
         "CANCEL_BTN": "Cancel",
         "VALIDATION_REQUIRED": "This field is mandatory",
-        "VALIDATION_INCORRECT_FILENAME": "Please, enter correct file name"
+        "VALIDATION_INCORRECT_FILENAME": "Please, enter correct file name",
+        "VALIDATION_TOO_LONG": "Entered text is too long",
+        "VALIDATION_INCORRECT_VALUE": "This value is incorrect"
+    },
+    "NOTIFICATIONS": {
+        "ON_SUCCESS_NEW_JOB_POST": "New print job has been created",
+        "ON_FAILED_POST": "Something went wrong, print job hasn't been created",
+        "ON_SUCCESS_DISMISS": "OK",
+        "ON_FAIL_DISMISS": "Try again later",
+        "GENERAL_ERROR": "General error occured"
     }
 }

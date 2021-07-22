@@ -21,6 +21,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -62,6 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSortModule,
     MatIconModule,
     MatTooltipModule,
+    MatSnackBarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

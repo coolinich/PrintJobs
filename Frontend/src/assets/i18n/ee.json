@@ -32,6 +32,15 @@
         "SUBMIT_BTN": "Esita",
         "CANCEL_BTN": "Tühista",
         "VALIDATION_REQUIRED": "See väli on kohustuslik",
-        "VALIDATION_INCORRECT_FILENAME": "Palun sisesta õige faili nimi"
+        "VALIDATION_INCORRECT_FILENAME": "Palun sisesta õige faili nimi",
+        "VALIDATION_TOO_LONG": "Sisestatud tekst on liiga pikk",
+        "VALIDATION_INCORRECT_VALUE": "See väärtus on vale"
+    },
+    "NOTIFICATIONS": {
+        "ON_SUCCESS_NEW_JOB_POST": "Uus prinditöö on loodud",
+        "ON_FAILED_POST": "Midagi läks valesti, prinditööd pole loodud",
+        "ON_SUCCESS_DISMISS": "OK",
+        "ON_FAIL_DISMISS": "Proovige hiljem uuesti",
+        "GENERAL_ERROR": "Ilmnes üldine viga"
     }
 }

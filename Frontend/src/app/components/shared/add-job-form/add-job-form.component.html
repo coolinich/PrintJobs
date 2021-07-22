@@ -10,11 +10,23 @@
     <div class="set-time__wrapper">
         <mat-form-field appearance="fill">
             <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.ESTIMATED_DURATION" | translate }}</mat-label>
-            <input type="number" matInput formControlName="estimatedDuration">
+            <input type="number" min="1" step="1" matInput formControlName="estimatedDuration">
+            <mat-error
+              *ngIf="estimatedDuration?.hasError('required') && !estimatedDuration?.hasError('pattern')">
+              {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_REQUIRED" | translate }}
+            </mat-error>
+            <mat-error
+              *ngIf="estimatedDuration?.hasError('pattern')">
+              {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_INCORRECT_VALUE" | translate }}
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.START_DATE" | translate }}</mat-label>
             <input matInput formControlName="startDate" type="datetime-local" [min]="currentTimeFormatted">
+            <mat-error
+              *ngIf="startDate?.hasError('required')">
+              {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_REQUIRED" | translate }}
+            </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.CREATED_DATE" | translate }}</mat-label>
@@ -37,8 +49,12 @@
         <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.JOB_DESCRIPTION" | translate }}</mat-label>
         <textarea matInput formControlName="jobDescription"></textarea>
         <mat-error
-            *ngIf="jobDescription?.errors?.required">
-            {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_REQUIRED" | translate }}
+          *ngIf="jobDescription?.hasError('required') && !jobDescription?.hasError('maxlength')">
+          {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_REQUIRED" | translate }}
+        </mat-error>
+        <mat-error
+          *ngIf="jobDescription?.hasError('maxlength')">
+          {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_TOO_LONG" | translate }}
         </mat-error>
     </mat-form-field>
     <div class="printer-settings__wrapper">
@@ -68,7 +84,7 @@
           (click)="onSubmit(addNewPrintJobFormRef)"
           mat-stroked-button
           color="primary"
-          [disabled]="addNewPrintJobForm && (addNewPrintJobForm.pristine || addNewPrintJobForm.invalid)">
+          [disabled]="addNewPrintJobForm && (loading || addNewPrintJobForm.pristine || addNewPrintJobForm.invalid)">
           {{ "CREATE_NEW_PRINT_JOB_FORM.SUBMIT_BTN" | translate }}
         </button>
         <button
