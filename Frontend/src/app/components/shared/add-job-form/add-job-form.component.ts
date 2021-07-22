@@ -32,7 +32,7 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
     jobStatus: new FormControl('')
   });
   translationsForSnackBar: any;
-  loading: boolean = false;
+  ifLoading: boolean = false;
 
   constructor(
     private printJobsService: PrintJobsService,
@@ -59,7 +59,7 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(formDirective: FormGroupDirective) {
-    this.loading = true;
+    this.ifLoading = true;
     this.printJobsService
       .addNewPrintJob(this.prepareFormData())
       .pipe(takeUntil(this.activeFormsubject$))
@@ -67,7 +67,7 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
         res => {
           formDirective.resetForm();
           this.addNewPrintJobForm.reset();
-          this.loading = false;
+          this.ifLoading = false;
           this.setInitialFormState();
           this._snackBar.open(
             this.translationsForSnackBar.ON_SUCCESS_NEW_JOB_POST,
@@ -78,7 +78,7 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
           );
         },
         err => {
-          this.loading = false;
+          this.ifLoading = false;
           this._snackBar.open(
             this.translationsForSnackBar.ON_FAILED_POST,
             this.translationsForSnackBar.ON_FAIL_DISMISS,

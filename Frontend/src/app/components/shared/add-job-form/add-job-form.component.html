@@ -1,4 +1,7 @@
 <form [formGroup]="addNewPrintJobForm" #addNewPrintJobFormRef="ngForm" class="form__container"  novalidate>
+    <div class="spinner-container" *ngIf="ifLoading">
+        <mat-spinner></mat-spinner>
+    </div>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.CREATED_BY" | translate }}</mat-label>
         <input matInput formControlName="createdBy">
@@ -84,7 +87,7 @@
           (click)="onSubmit(addNewPrintJobFormRef)"
           mat-stroked-button
           color="primary"
-          [disabled]="addNewPrintJobForm && (loading || addNewPrintJobForm.pristine || addNewPrintJobForm.invalid)">
+          [disabled]="addNewPrintJobForm && (ifLoading || addNewPrintJobForm.pristine || addNewPrintJobForm.invalid)">
           {{ "CREATE_NEW_PRINT_JOB_FORM.SUBMIT_BTN" | translate }}
         </button>
         <button
