@@ -22,7 +22,8 @@
     "CREATE_NEW_PRINT_JOB_FORM": {
         "CREATED_BY": "Loodud",
         "CREATED_DATE": "Loodud kuupäev",
-        "START_DATE": "Alguskuupäev",
+        "START_DAY": "Algus kuupäev",
+        "START_TIME": "Algusaeg",
         "ESTIMATED_DURATION": "Hinnanguline kestus (min)",
         "FILE_NAME": "Faili nimi",
         "JOB_DESCRIPTION": "Töö kirjeldus",

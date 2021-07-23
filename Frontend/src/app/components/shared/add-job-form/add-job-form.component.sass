@@ -15,12 +15,8 @@
         align-items: center
         z-index: 10000
         opacity: .4
-        background-color: $base-shadow-gray-color
-    .set-time__wrapper
-        display: flex
-        justify-content: space-between
-        flex-flow: wrap
-    .printer-settings__wrapper
+        background-color: $base-shadow-gray-color           
+    .time-settings__wrapper, .set-start-time__wrapper, .printer-settings__wrapper
         display: flex
         mat-form-field + mat-form-field
             margin-left: .5rem    
@@ -36,7 +32,7 @@
         justify-content: space-between
         button
             min-width: 49%
-    .printer-settings__wrapper
+    .time-settings__wrapper, .set-start-time__wrapper, .printer-settings__wrapper
         justify-content: space-between
         mat-form-field
             margin-left: 0
@@ -49,7 +45,7 @@
             flex-direction: column
             mat-form-field
                 min-width: 100%
-        .printer-settings__wrapper
+        .time-settings__wrapper, .set-start-time__wrapper, .printer-settings__wrapper
             flex-direction: column
             mat-form-field
                 min-width: 100%

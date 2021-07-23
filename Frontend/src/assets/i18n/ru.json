@@ -22,7 +22,8 @@
     "CREATE_NEW_PRINT_JOB_FORM": {
         "CREATED_BY": "Кем создана",
         "CREATED_DATE": "Дата и время создания",
-        "START_DATE": "Дата и время начала печати",
+        "START_DAY": "Дата начала печати",
+        "START_TIME": "Время начала печати",
         "ESTIMATED_DURATION": "Длительность (мин)",
         "FILE_NAME": "Имя файла",
         "JOB_DESCRIPTION": "Описание задачи",

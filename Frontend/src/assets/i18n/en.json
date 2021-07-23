@@ -22,7 +22,8 @@
     "CREATE_NEW_PRINT_JOB_FORM": {
         "CREATED_BY": "Created by",
         "CREATED_DATE": "Created date and time",
-        "START_DATE": "Start date and time",
+        "START_DAY": "Start date",
+        "START_TIME": "Start time",
         "ESTIMATED_DURATION": "Estimated duration (min)",
         "FILE_NAME": "File name",
         "JOB_DESCRIPTION": "Job description",
