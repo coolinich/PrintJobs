@@ -1,5 +1,5 @@
 export interface Job {
-    "id": string,
+    "id"?: string,
     "createdBy": string,
     "createdDate": string,
     "startDate"?: string,
@@ -8,5 +8,5 @@ export interface Job {
     "jobDescription": string,
     "printerModel": string,
     "printerType": string,
-    "jobStatus": string
+    "jobStatus"?: string
 }

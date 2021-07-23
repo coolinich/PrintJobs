@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import PrintJobManager from './business-logic/print-job-manager.js';
 import InMemoryJobsRepository from './repositories-impl/inmemory-jobs-repository.js';
+import { validateJobModel } from './model.js'
+
 const PORT = 3001;
 
 class Server {
@@ -30,7 +32,7 @@ class Server {
        
         this.app.post('/job', async (req, res) => {
             const { job } = req.body;
-            if (!job) {
+            if (!job || !validateJobModel(job)) {
                 return res.status(400).send({
                     statusCode: 400,
                     errorMessage: "Bad request"
