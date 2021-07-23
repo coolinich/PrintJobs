@@ -6,7 +6,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Job } from 'src/app/interfaces/job';
 import { PrintJobsService } from 'src/app/services/print-jobs.service';
-import { formatTimeToDateTimeLocal } from 'src/app/utils/format-time';
+import { getLocalTimeDate, getLocalDay, getLocalTime } from 'src/app/utils/format-time';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'gpj-add-job-form',
@@ -15,11 +16,18 @@ import { formatTimeToDateTimeLocal } from 'src/app/utils/format-time';
 })
 export class AddJobFormComponent implements OnInit, OnDestroy {
   private readonly activeFormsubject$ = new Subject();
-  currentTimeFormatted = formatTimeToDateTimeLocal(new Date()); 
+  currentDayTimeFormatted: string = '';
+  currentDay: string = '';
+  currentTime: string = '';
+  startDayToSubmit: string = '';
+
   addNewPrintJobForm = new FormGroup({
     createdBy: new FormControl('', [Validators.required, Validators.maxLength(255)]),
     createdDate: new FormControl({value: '', disabled: true}),
-    startDate: new FormControl('', [Validators.required]),
+    startDate: new FormGroup({
+      startDay: new FormControl('', [Validators.required]),
+      startTime: new FormControl('', [Validators.required])
+    }), 
     estimatedDuration: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
     fileName: new FormControl('', [
       Validators.required,
@@ -54,8 +62,11 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
   }
 
   setInitialFormState() {
-    this.currentTimeFormatted = formatTimeToDateTimeLocal(new Date());
-    this.createdDate?.setValue(this.currentTimeFormatted);
+    const dateNow = new Date();
+    this.currentDayTimeFormatted = getLocalTimeDate(dateNow);
+    this.currentDay = getLocalDay(dateNow);
+    this.currentTime = getLocalTime(dateNow);
+    this.createdDate?.setValue(this.currentDayTimeFormatted);
   }
 
   onSubmit(formDirective: FormGroupDirective) {
@@ -99,7 +110,8 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
   prepareFormData(): Job {
     let dataToBeSubmitted = this.addNewPrintJobForm.getRawValue();
     dataToBeSubmitted.createdDate = new Date(dataToBeSubmitted.createdDate);
-    dataToBeSubmitted.startDate = new Date(dataToBeSubmitted.startDate);
+    const preparedStartDate = `${this.startDayToSubmit}T${dataToBeSubmitted.startDate.startTime}`;
+    dataToBeSubmitted.startDate = new Date(preparedStartDate);
     return dataToBeSubmitted;
   }
 
@@ -112,7 +124,15 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
   }
 
   get startDate() {
-    return this.addNewPrintJobForm.get('startDate');
+    return this.addNewPrintJobForm.get('startDate') as FormGroup;
+  }
+
+  get startDay() {
+    return this.startDate?.get('startDay');
+  }
+
+  get startTime() {
+    return this.startDate?.get('startTime');
   }
 
   get estimatedDuration() {
@@ -133,5 +153,9 @@ export class AddJobFormComponent implements OnInit, OnDestroy {
 
   get printerType() {
     return this.addNewPrintJobForm.get('printerType');
+  }
+
+  getStartDay(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.startDayToSubmit = event.value ? getLocalDay(new Date(event.value)) : '';
   }
 }

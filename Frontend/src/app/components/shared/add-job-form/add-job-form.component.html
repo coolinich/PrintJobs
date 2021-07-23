@@ -10,7 +10,7 @@
             {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_REQUIRED" | translate }}
         </mat-error>
     </mat-form-field>
-    <div class="set-time__wrapper">
+    <div class="time-settings__wrapper">
         <mat-form-field appearance="fill">
             <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.ESTIMATED_DURATION" | translate }}</mat-label>
             <input type="number" min="1" step="1" matInput formControlName="estimatedDuration">
@@ -24,27 +24,46 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.START_DATE" | translate }}</mat-label>
-            <input matInput formControlName="startDate" type="datetime-local" [min]="currentTimeFormatted">
-            <mat-error
-              *ngIf="startDate?.hasError('required')">
-              {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_REQUIRED" | translate }}
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
             <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.CREATED_DATE" | translate }}</mat-label>
             <input matInput formControlName="createdDate" type="datetime-local">
+        </mat-form-field>
+    </div>
+    <div formGroupName="startDate" class="set-start-time__wrapper">
+        <mat-form-field appearance="fill">
+            <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.START_DAY" | translate }}</mat-label>
+            <input
+              matInput
+              [matDatepicker]="startDayPicker"
+              formControlName="startDay"
+              [min]="currentDay"
+              (dateInput)="getStartDay('input', $event)"
+              (dateChange)="getStartDay('change', $event)"
+            >
+            <mat-datepicker-toggle matSuffix [for]="startDayPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startDayPicker></mat-datepicker>
+            <mat-error
+              *ngIf="startDay?.hasError('required')">
+              {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_REQUIRED" | translate }}
+            </mat-error> 
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.START_TIME" | translate }}</mat-label>
+            <input matInput formControlName="startTime" type="time">
+            <mat-error
+              *ngIf="startTime?.hasError('required')">
+              {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_REQUIRED" | translate }}
+            </mat-error>
         </mat-form-field>
     </div>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>{{ "CREATE_NEW_PRINT_JOB_FORM.FILE_NAME" | translate }}</mat-label>
         <input matInput formControlName="fileName">
         <mat-error
-            *ngIf="fileName?.touched && fileName?.errors?.required">
+            *ngIf="fileName?.hasError('required') && !fileName?.hasError('pattern')">
             {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_REQUIRED" | translate }}
         </mat-error>
         <mat-error
-            *ngIf="fileName?.touched && fileName?.errors?.pattern">
+            *ngIf="fileName?.hasError('pattern')">
             {{ "CREATE_NEW_PRINT_JOB_FORM.VALIDATION_INCORRECT_FILENAME" | translate }}
         </mat-error>
     </mat-form-field>
