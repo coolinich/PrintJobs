@@ -13,13 +13,16 @@ export class PrintJobsService {
   constructor(private http: HttpClient) { }
 
   getAllPrintJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>(`${API_URL}/jobs`);
+    return this.http.get<Job[]>(`${API_URL}/jobs`)
+      .pipe(
+        catchError(err => throwError(err))
+      );
   }
 
   addNewPrintJob(job: Job): Observable<Job> {
     return this.http.post<Job>(`${API_URL}/job`, { job })
       .pipe(
-        catchError((err) => throwError(err?.message))
-      )
+        catchError(err => throwError(err))
+      );
   }
 }

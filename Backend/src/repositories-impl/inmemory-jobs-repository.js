@@ -1,5 +1,8 @@
-export default class InMemoryJobsRepository {
+import PrintJobsRepository from '../business-logic/print-jobs-repository.js';
+
+export default class InMemoryJobsRepository extends PrintJobsRepository {
     constructor() {
+        super();
         this.jobs = [];
     }
 
