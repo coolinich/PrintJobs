@@ -53,7 +53,11 @@ docker stop [container name]
 ### **Backend**
 Go to the project /Backend folder.
 ### _Running project_
-Run 
+1. Execute command 
+```
+npm install
+```
+2. Run 
 ```
 npm run start
 ```
@@ -80,12 +84,17 @@ to see the list of possible fixes.
 ### **Frontend**
 Go to the project /Frontend folder.
 ### _Running project_
-* Run 
+1. Execute command 
+```
+npm install
+```
+2. Run 
 ```
 ng serve
 ```
 for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-* Run 
+
+Run 
 ```
 ng build
 ```
